@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Scripts/Input.gd" type="Script" id=1]
 [ext_resource path="res://Fonts/plex_mono_28.tres" type="DynamicFont" id=2]
 [ext_resource path="res://Scripts/Game.gd" type="Script" id=3]
 [ext_resource path="res://Scripts/CommandProcessor.gd" type="Script" id=4]
 [ext_resource path="res://Scenes/Room.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scripts/RoomManager.gd" type="Script" id=6]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0, 0.0901961, 0.105882, 1 )
@@ -29,6 +30,7 @@ intro_text = "You awake in a dark cave. You don't remember how you got here and 
 script = ExtResource( 4 )
 
 [node name="RoomManager" type="Node" parent="."]
+script = ExtResource( 6 )
 
 [node name="CavernRoom" parent="RoomManager" instance=ExtResource( 5 )]
 margin_left = 155.0
