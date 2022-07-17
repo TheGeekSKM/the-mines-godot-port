@@ -12,6 +12,7 @@ onready var history_rows = $Background/MarginContainer/Rows/GameInfo/Scroll/Hist
 onready var scroll = $Background/MarginContainer/Rows/GameInfo/Scroll
 onready var scroll_bar = scroll.get_v_scrollbar()
 onready var command_processor = $CommandProcessor
+onready var room_manager = $RoomManager
 
 func _ready() -> void:
 	scroll_bar.connect("changed", self, "handle_scroll_bar_changed")
@@ -19,6 +20,7 @@ func _ready() -> void:
 	var starting_message = Response.instance()
 	starting_message.text = intro_text
 	add_response_to_game(starting_message)
+	command_processor.initialize(room_manager.get_child(0))
 
 
 func handle_scroll_bar_changed():

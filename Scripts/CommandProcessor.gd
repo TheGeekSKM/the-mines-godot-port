@@ -1,5 +1,11 @@
 extends Node
 
+var current_room = null
+
+func initialize(starting_room):
+	current_room = starting_room
+
+
 func process_command(input: String):
 	var words = input.split(" ", false, 0)
 	if words.size() == 0:
