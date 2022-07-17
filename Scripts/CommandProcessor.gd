@@ -32,7 +32,8 @@ func go(second_word: String):
 		return "You need to specify a direction/location with the \"go\" command. EX: \"go east\" "
 	
 	if 	current_room.exits.keys().has(second_word):
-		var change_response = change_room(current_room.exits[second_word])
+		var exit = current_room.exits[second_word]
+		var change_response = change_room(exit.get_other_room(current_room))
 		return PoolStringArray(["You head to %s" % second_word, change_response]).join("\n")
 	else:
 		return "There is no doorway to the %s" % second_word

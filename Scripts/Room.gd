@@ -1,24 +1,35 @@
+tool
 extends PanelContainer
 class_name GameRoom 
 
-export (String) var room_name = "Room Name"
-export (String) var rooom_description = "This is the description of the room."
+export (String) var room_name = "Room Name" setget set_room_name
+export (String, MULTILINE) var rooom_description = "This is the description of the room." setget set_room_description
+
+func set_room_name(new_name: String):
+	$MarginContainer/Rows/RoomName.text = new_name
+	room_name = new_name
+
+func set_room_description(new_description: String):
+	$MarginContainer/Rows/RoomDescription.text = new_description
+	rooom_description = new_description
 
 var exits: Dictionary = {}
 
 func connect_exit(direction: String, room: GameRoom):
+	
+	var exit = Exit.new()
+	exit.room_one = self
+	exit.room_two = room
+	exits[direction] = exit
+	
 	match direction:
 		"north":
-			exits[direction] = room
-			room.exits["south"] = self
+			room.exits["south"] = exit
 		"south":
-			exits[direction] = room
-			room.exits["north"] = self
+			room.exits["north"] = exit
 		"east":
-			exits[direction] = room
-			room.exits["west"] = self
+			room.exits["west"] = exit
 		"west":
-			exits[direction] = room
-			room.exits["east"] = self
+			room.exits["east"] = exit
 		_:
 			printerr("Tried to connect to invalid direction: %s", direction)
