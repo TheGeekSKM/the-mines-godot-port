@@ -17,9 +17,10 @@ onready var room_manager = $RoomManager
 func _ready() -> void:
 	scroll_bar.connect("changed", self, "handle_scroll_bar_changed")
 	max_scroll_length = scroll_bar.max_value
-	var starting_message = Response.instance()
-	starting_message.text = intro_text
-	add_response_to_game(starting_message)
+	
+	handle_response_generated("You awake in a small cavernous area, surrounded by stalactites and small stones. The only sounds you can hear are the drips of water periodically reminding you of the pitfalls that await you...You need to get out before it's too late... [HINT: Type \"help\" to see all the available commands]")
+	
+	command_processor.connect("response_generated", self, "handle_response_generated")
 	command_processor.initialize(room_manager.get_child(0))
 
 
@@ -41,6 +42,13 @@ func _on_Input_text_entered(new_text: String) -> void:
 	
 	add_response_to_game(input_response)
 
+#responds to the room_changing signal
+func handle_response_generated(response_text: String):
+	var response = Response.instance()
+	response.text = response_text
+	add_response_to_game(response)
+
+#Prints text out to the screen
 func add_response_to_game(response: Control):
 	history_rows.add_child(response)
 	delete_history_beyond_limit()	

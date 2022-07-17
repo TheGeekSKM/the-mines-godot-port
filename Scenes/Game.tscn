@@ -30,12 +30,12 @@ script = ExtResource( 4 )
 
 [node name="RoomManager" type="Node" parent="."]
 
-[node name="Room" parent="RoomManager" instance=ExtResource( 5 )]
+[node name="CavernRoom" parent="RoomManager" instance=ExtResource( 5 )]
 margin_left = 155.0
 margin_top = -337.0
 margin_right = 405.0
 margin_bottom = -237.0
-room_name = "Cavern"
+room_name = "a cavern"
 rooom_description = "a small cavernous room with small crevices and stones..."
 
 [node name="Background" type="PanelContainer" parent="."]

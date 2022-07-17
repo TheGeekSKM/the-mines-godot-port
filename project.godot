@@ -8,6 +8,16 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "PanelContainer",
+"class": "GameRoom",
+"language": "GDScript",
+"path": "res://Scripts/Room.gd"
+} ]
+_global_script_class_icons={
+"GameRoom": ""
+}
+
 [application]
 
 config/name="The Mines Gd Script Godot"
