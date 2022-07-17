@@ -14,12 +14,17 @@ func process_command(input: String):
 	match first_word:
 		"go":
 			return go(second_word)
+		"help":
+			return help()
 		_:
 			return "Unrecognized command...please try again..."
 
 
 func go(second_word: String): 
 	if second_word == "":
-		return "You need to specify a cardinal direction with the \"go\" command"
+		return "You need to specify a direction/location with the \"go\" command. EX: \"go east\" "
 	
 	return "You head to the %s" % second_word
+
+func help():
+	return "You can use these commands: go [location], help"
