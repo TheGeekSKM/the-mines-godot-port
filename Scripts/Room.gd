@@ -16,9 +16,9 @@ func connect_exit(direction: String, room: GameRoom):
 			room.exits["north"] = self
 		"east":
 			exits[direction] = room
-			room.exits["east"] = self
+			room.exits["west"] = self
 		"west":
 			exits[direction] = room
-			room.exits["west"] = self
+			room.exits["east"] = self
 		_:
 			printerr("Tried to connect to invalid direction: %s", direction)
